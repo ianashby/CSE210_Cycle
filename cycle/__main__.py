@@ -21,17 +21,17 @@ def main():
     # create the cast
     cast = Cast()
     cast.add_actor("foods", Food())
-    cast.add_actor("cycles", Cycle())
-    cast.add_actor("cycles",Cycle())
+    cast.add_actor("cycles", Cycle(Point(int(constants.MAX_X/4),int(constants.MAX_Y/2))))
+    cast.add_actor("cycles",Cycle(Point(int((constants.MAX_X/4)*3),int(constants.MAX_Y/2))))
     cast.add_actor("scores", Score())
+    
     
     cycles = cast.get_actors("cycles")
 
     cycles[0].set_color(constants.GREEN)
-    cycles[0].set_position(Point(constants.MAX_X/4,constants.MAX_Y/2))
-
+    
     cycles[1].set_color(constants.RED)
-    cycles[1].set_position(Point(constants.MAX_X/.75,constants.MAX_Y/2))
+    
     
     # start the game
     keyboard_service = KeyboardService()

@@ -12,10 +12,12 @@ class Cycle(Actor):
     Attributes:
         _points (int): The number of points the food is worth.
     """
-    def __init__(self):
+    def __init__(self,position):
         super().__init__()
         self._segments = []
+        self._position = position
         self._prepare_body()
+
 
     def get_segments(self):
         return self._segments
@@ -56,8 +58,8 @@ class Cycle(Actor):
         y = self._position.get_y()
 
         for i in range(constants.SNAKE_LENGTH):
-            position = Point(x - i * constants.CELL_SIZE, y)
-            velocity = Point(1 * constants.CELL_SIZE, 0)
+            position = Point(x, y+ i * constants.CELL_SIZE)
+            velocity = Point(0,-1 * constants.CELL_SIZE)
             text = "@" if i == 0 else "#"
             
             segment = Actor()
@@ -66,3 +68,8 @@ class Cycle(Actor):
             segment.set_text(text)
             segment.set_color(self._color)
             self._segments.append(segment)
+    
+    def set_color(self, color):
+        for segment in self._segments:
+            segment.set_color(color)
+    

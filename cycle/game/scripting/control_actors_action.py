@@ -67,14 +67,15 @@ class ControlActorsAction(Action):
             cycle2_turns = 2
 
         # up
-        if self._keyboard_service.is_key_down('k'):
+        if self._keyboard_service.is_key_down('i'):
             self._direction = Point(0, -constants.CELL_SIZE)
             cycle2_turns = 2
 
         # down
-        if self._keyboard_service.is_key_down('i'):
+        if self._keyboard_service.is_key_down('k'):
             self._direction = Point(0, constants.CELL_SIZE)
             cycle2_turns = 2
+
         if cycle2_turns:    
             cycle = cast.get_actors("cycles")[1]
             cycle.turn_head(self._direction)
